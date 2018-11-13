@@ -5,6 +5,7 @@ class Header extends Component {
     return (
       <div id="header">
       <h1> Account Balance </h1>
+      <p> testing </p>
         
       </div>
     );
