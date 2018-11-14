@@ -9,7 +9,7 @@ const InputFields = props =>{
             <option value={income}> INCOME </option>
             <option value={expense}> EXPENSE </option>
             </select>
-            <lable> Description</lable>
+            <lable htmlFor="desc"> Description</lable> 
             <input
                 type="text"
                 id="desc"
@@ -19,7 +19,7 @@ const InputFields = props =>{
                 value={desc}
                 required
             />
-            <lable>Amount</lable>
+            <lable htmlFor="amount">Amount</lable>
             <input
                 type="number"
                 id="amount"
