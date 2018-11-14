@@ -2,6 +2,8 @@ import { Component } from 'react';
 import Header from './components/Header';
 import InputFields from './components/InputFields';
 import DataDisplay from './components/DataDisplay';
+import "./App.css";
+
 
 class App extends Component {
   
@@ -11,8 +13,7 @@ class App extends Component {
     expense:"expense",
     desc: "",
     amount: "",
-    incomeList=[],
-    expenseList=[]
+   
   };
 
   handleInput=e=>{
@@ -41,13 +42,22 @@ class App extends Component {
       incomeList.push({desc, amount});
       this.setState({
         incomeList
-      });}
+      });
+      localStorage.setItem(
+        "incomeList",
+        JSON.stringify(incomeList, undefined, 4)
+      );
+    }
       if (this.state.inputType==="expense"){
         const expenseList=this.state.expenseList;
         expenseList.push({desc,amount});
         this.setState({
           expenseList
         });
+        localStorage.setItem(
+          "expenseList",
+          JSON.stringify(expenseList, undefined, 4)
+        );
       }
     };
     
@@ -61,18 +71,27 @@ class App extends Component {
         const newList = this.state.incomeList.filter(i=>
           i.id!==item.id);
           this.setState({"incomeList":newList});
+          localStorage.setItem(
+            "incomeList",
+            JSON.stringify(newList, undefined, 4)
+          );
       }else if(arr==="expenseList"){
         const newList= this.state.expenseList.filter(i=>
           i.id !== item.id
         );
         this.setState({"expenseList":newList});
+        localStorage.setItem(
+          "expenseList",
+          JSON.stringify(newList, undefined, 4)
+        );
+  
       }
     }
-  }
+  
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Header/>
         <main>
           <InputFields
@@ -88,15 +107,15 @@ class App extends Component {
           <DataDisplay
           expenseList={this.state.expenseList}
           incomeList={this.state.incomeList}
-          expenseSum={this.state.expenseTotal}
+          expenseSum={this.state.expenseSum}
           incomeSum={this.state.incomeSum}
-          date={this.state.date}
           handleDelete={this.handleDelete}
           />
         </main>
       </div>
         
-    );
+      );
+    }
   }
-  }
+
 export default App;
