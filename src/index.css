@@ -2,16 +2,5 @@
   box-sizing : border-box;
   margin : 0;
   padding : 0;
-}
-
-
-* button{
-    border: 1px solid black;
-    margin: 3px;
-}
-
-* input{
-    background-color: rgb(237, 235, 235);
-    color: black;
-
+  background-color: rgb(243, 239, 239);
 }

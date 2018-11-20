@@ -1,0 +1,54 @@
+#wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    
+
+}
+.income{
+    margin: 1rem;
+    width: 28rem;
+    border: 3px solid rgb(142, 223, 142);
+    
+}
+.expense{
+    margin:1rem;
+    width: 28rem;
+    border: 3px solid rgb(176, 81, 81);
+}
+.total{
+    margin:auto;
+    width: 30rem;
+    text-align: center;
+    background-color: rgb(250, 200, 60);
+    border-radius: 1rem 1rem;
+}
+.title-income{
+    background-color:rgb(142, 223, 142);
+    padding:1rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.title-expense{
+    background-color: rgb(176, 81, 81);
+    padding:1rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.datadisplay{
+    list-style-type: none;
+    padding: 0.5rem;
+}
+
+.sum{
+    font-size: 2rem;
+}
+.total{
+    margin-top:1rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding: 1rem;
+}

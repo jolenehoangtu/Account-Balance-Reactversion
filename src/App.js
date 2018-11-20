@@ -1,7 +1,8 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Header from './components/Header';
 import InputFields from './components/InputFields';
 import DataDisplay from './components/DataDisplay';
+import {datetimeDisplay} from "./components/method/datetimeDisplay";
 import "./App.css";
 
 
@@ -13,7 +14,9 @@ class App extends Component {
     expense:"expense",
     desc: "",
     amount: "",
-   
+    incomeList: JSON.parse(localStorage.getItem("incomeList")) || [],
+    expenseList: JSON.parse(localStorage.getItem("expenseList")) || [],
+    date:""
   };
 
   handleInput=e=>{
@@ -29,17 +32,18 @@ class App extends Component {
     }
     if (e.target.name ==="amount"){
       this.setState({
-        amount: partseFloat(e.target.value)
+        amount: parseFloat(e.target.value)
       });
     }
   };
   
   itemAdding= ()=>{
+    let date=datetimeDisplay();
     const desc=this.state.desc;
     const amount=parseFloat(this.state.amount).toFixed(2);
     if (this.state.inputType ==="income"){
       const incomeList=this.state.incomeList;
-      incomeList.push({desc, amount});
+      incomeList.push({desc, amount, date});
       this.setState({
         incomeList
       });
@@ -50,7 +54,7 @@ class App extends Component {
     }
       if (this.state.inputType==="expense"){
         const expenseList=this.state.expenseList;
-        expenseList.push({desc,amount});
+        expenseList.push({desc,amount,date});
         this.setState({
           expenseList
         });
@@ -68,8 +72,9 @@ class App extends Component {
 
     handleDelete=(arr,item)=>{
       if (arr==="incomeList"){
-        const newList = this.state.incomeList.filter(i=>
-          i.id!==item.id);
+        const newList = this.state.incomeList.filter(i =>
+           i.id!==item.id);
+          console.log(item.id);
           this.setState({"incomeList":newList});
           localStorage.setItem(
             "incomeList",
@@ -79,6 +84,7 @@ class App extends Component {
         const newList= this.state.expenseList.filter(i=>
           i.id !== item.id
         );
+        console.log(item.id);
         this.setState({"expenseList":newList});
         localStorage.setItem(
           "expenseList",
@@ -87,8 +93,10 @@ class App extends Component {
   
       }
     }
-  
-
+    componentDidUpdate(){
+      console.log("incomeList",this.state.incomeList);
+      console.log("expenseList", this.state.expenseList);
+    }
   render() {
     return (
       <div className="App">
@@ -110,6 +118,7 @@ class App extends Component {
           expenseSum={this.state.expenseSum}
           incomeSum={this.state.incomeSum}
           handleDelete={this.handleDelete}
+          date={this.state.date}
           />
         </main>
       </div>

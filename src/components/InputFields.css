@@ -1,0 +1,21 @@
+*{
+    margin: 0.8rem;
+}
+.inputWrapper{
+    margin: auto;
+    text-align: center;
+}
+
+.select{
+    width: 6rem;
+    height: 2rem;
+    border: 1px solid grey;
+    font-weight: bold;
+}
+
+.button{
+    width: 6rem;
+    height: 2rem;
+    border: 1px solid grey;
+    font-weight: bold;
+}

@@ -1,15 +1,15 @@
 import React from "react";
-
+import "./InputFields.css";
 const InputFields = props =>{
     let {desc, amount,income, expense, inputType, handleInput, handleInputClick}=props;
     return(
-        <div ClassName="">
-        <form className="" onSubmit={handleInputClick}>
-            <select value={inputType} className="" onChange={handleInput}>
+        <div className="inputWrapper">
+        <form onSubmit={handleInputClick}>
+            <select value={inputType} className="select" onChange={handleInput}>
             <option value={income}> INCOME </option>
             <option value={expense}> EXPENSE </option>
             </select>
-            <lable htmlFor="desc"> Description</lable> 
+            <label htmlFor="desc"> Description</label> 
             <input
                 type="text"
                 id="desc"
@@ -19,7 +19,7 @@ const InputFields = props =>{
                 value={desc}
                 required
             />
-            <lable htmlFor="amount">Amount</lable>
+            <label htmlFor="amount">Amount</label>
             <input
                 type="number"
                 id="amount"
@@ -29,7 +29,7 @@ const InputFields = props =>{
                 value={amount}
                 required
             />
-            <button className=""> ADD </button>
+            <button className="button"> ADD </button>
         </form>
         </div>
     );
